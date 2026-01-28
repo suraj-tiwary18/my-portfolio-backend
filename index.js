@@ -32,7 +32,7 @@ app.post("/send-message", async (req, res) => {
 
     res.json({ success: true, message: "Message sent successfully" });
   } catch (error) {
-    console.error("SENDGRID ERROR:", error);
+    console.error("SendGrid Error:", error.response?.body || error.message);
     res.status(500).json({ success: false, message: "Email failed" });
   }
 });
