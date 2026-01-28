@@ -14,18 +14,21 @@ app.post("/send-message", async (req, res) => {
 
   try {
     await sgMail.send({
-      to: process.env.FROM_EMAIL,
-      from: process.env.FROM_EMAIL,   // verified sender
-      replyTo: email,                 // user email
+      to: process.env.TO_EMAIL,
+      from: {
+        email: process.env.FROM_EMAIL,
+        name: "Portfolio Contact"
+      },
+      replyTo: email, // user ka email
       subject: `New message from ${name}`,
       html: `
-        <h3>New Contact Message</h3>
+        <h3>New Contact Form Message</h3>
         <p><b>Name:</b> ${name}</p>
         <p><b>Email:</b> ${email}</p>
-        <p><b>Message:</b></p>
-        <p>${message}</p>
-      `
+        <p><b>Message:</b> ${message}</p>
+      `,
     });
+
 
     res.json({ success: true, message: "Message sent successfully" });
   } catch (error) {
