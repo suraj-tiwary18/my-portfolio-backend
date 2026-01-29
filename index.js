@@ -58,7 +58,7 @@ app.post("/send-message", async (req, res) => {
         name: "Portfolio Contact",
       },
       replyTo: email, // user email
-      subject: `📩 New message from ${name}`,
+      subject: `📩 New Portfolio Message — ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif;">
           <h2>New Contact Form Message</h2>
